@@ -1,8 +1,9 @@
 import jwt
 from django.conf import settings
 from rest_framework import authentication
-from rest_framework import exceptions
 from users.models import User
+
+# from rest_framework import exceptions
 
 
 class JWTAuthentication(authentication.BaseAuthentication):
@@ -21,3 +22,10 @@ class JWTAuthentication(authentication.BaseAuthentication):
             return None
         # except jwt.exceptions.DecodeError:
         #     raise exceptions.AuthenticationFailed(detail="JWT Format Invalid")
+
+
+""" 
+AWS Elastic Beanstalk 등을 통해 배포하는 경우 
+WSGIPassAuthorization On
+조건 .conf 파일에 추가해야 함
+"""
